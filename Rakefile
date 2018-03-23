@@ -1,5 +1,5 @@
 GIT_ROOT = `git rev-parse --show-toplevel`.strip
-VERSION = '0.6.0'
+VERSION = '0.6.1'
 LIBWEBP = "libwebp-#{VERSION}"
 
 
@@ -47,7 +47,9 @@ task :update_library_android do
       end
     end
 
-    NDK_BUILD_FPATH = #{Dir.home}/android-ndk-r15c/ndk-build
+    # NDK_BUILD_FPATH = '#{Dir.home}/android-ndk-r15c/ndk-build'
+    # sh "#{NDK_BUILD_FPATH} NDK_PROJECT_PATH=#{Dir.pwd} APP_BUILD_SCRIPT=#{Dir.pwd}/#{ANDROID_MK}"
+    NDK_BUILD_FPATH = '/Users/king/e/software/android-ndk-r15c/ndk-build'
     sh "#{NDK_BUILD_FPATH} NDK_PROJECT_PATH=#{Dir.pwd} APP_BUILD_SCRIPT=#{Dir.pwd}/#{ANDROID_MK}"
     cp_r "libs/armeabi-v7a/libwebp.so", "#{GIT_ROOT}/unity_project/Assets/unity.webp/Plugins/Android/libs/armeabi-v7a/libwebp.so"
     cp_r "libs/x86/libwebp.so", "#{GIT_ROOT}/unity_project/Assets/unity.webp/Plugins/Android/libs/x86/libwebp.so"

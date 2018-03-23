@@ -23,5 +23,5 @@
 sysinfo.txt
 
 # libwebp
-/libwebp*/
+#/libwebp*/
 /libwebp*.tar.gz
